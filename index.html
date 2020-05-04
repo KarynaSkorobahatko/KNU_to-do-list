@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Kanban Board</title>
+
+        <link rel="stylesheet" href="lib/Bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" href="lib/jQuery/jquery.ui.min.css" />
+        <link rel="stylesheet" href="assets/todo.css" />
+    </head>
+
+    <body class="well">
+        <div id="container">
+
+            <div id="header">Kanban Board</div>
+
+            <div class="task-list task-container" id="list1">
+                <h3>To Do</h3>
+            </div>
+            <div class="task-list task-container" id="list2">
+                <h3>In Process</h3>
+            </div>
+            <div class="task-list task-container" id="list3">
+                <h3>Done</h3>
+            </div>
+
+
+            <div class="task-list">
+                <h3>Add new</h3>
+                <form id="todo-form">
+                    <input type="text" placeholder="Task" />
+                    <textarea placeholder="To whom"></textarea>
+                    <input type="text" id="datepicker" placeholder="Due Date (dd/mm/yyyy)" />
+                    <input type="button" class="btn btn-outline-success" value="Add Task" onclick="todo.add();" />
+                </form>
+
+                <input type="button" class="btn btn-outline-danger" value="Clear Data" onclick="todo.clear();" />
+
+                <div id="delete">
+                    Drag to delete one OR delete everything using the "Clear Data" button
+                </div>
+            </div>
+
+            <div style="clear:both;"></div>
+	          <script type="text/javascript" src="lib/jQuery/jquery.min.js"></script>
+            <script type="text/javascript" src="lib/Bootstrap/bootstrap.min.js"></script>
+            <script type="text/javascript" src="lib/jQuery/jquery.ui.min.js"></script>
+            <script type="text/javascript" src="assets/todo.js"></script>
+
+            <script type="text/javascript">
+                $( "#datepicker" ).datepicker();
+                $( "#datepicker" ).datepicker("option", "dateFormat", "dd/mm/yy");
+
+                $(".task-container").droppable();
+                $(".todo-task").draggable({ revert: "valid", revertDuration:200 });
+                todo.init();
+            </script>
+
+        </div>
+    </body>
+</html>
